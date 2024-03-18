@@ -1,11 +1,10 @@
-import "./App.css";
+import "./assets/styles/css/Styles.css";
+import { GameBoard } from "./assets/components/GameBoard";
 
 function App() {
   return (
     <>
-      <div className="container text-center">
-        <h1 className="mt-5">Tic Tac Toe</h1>
-      </div>
+      <GameBoard></GameBoard>
     </>
   );
 }
