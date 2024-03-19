@@ -1,6 +1,6 @@
 /** Create the Game Board */
 
-function GameBoard(size) {
+function createGameBoard(size) {
   const row = size;
   const column = size;
   const board = [];
@@ -13,7 +13,7 @@ function GameBoard(size) {
   }
 
   const getBoard = () => {
-    board;
+    return board;
   };
 
   const getCell = (row, column) => {
@@ -62,8 +62,8 @@ function PlayerStats(
   return players;
 }
 
-function RunGame() {
-  const board = GameBoard(3);
+/* function RunGame() {
+  const board = createGameBoard(3);
   const players = PlayerStats();
   let activePlayer = players[0];
 
@@ -87,4 +87,6 @@ function RunGame() {
   board.printBoard();
 }
 
-RunGame();
+RunGame(); */
+
+export { createGameBoard, PlayerStats };

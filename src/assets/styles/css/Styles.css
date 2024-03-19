@@ -11844,5 +11844,29 @@ textarea.form-control-lg {
     display: none !important;
   }
 }
+/* styles.css */
+.board {
+  display: inline-block;
+  border: 2px solid #000;
+  border-radius: 8px;
+}
+
+.row {
+  display: flex;
+}
+
+.cell {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 24px;
+  border: 1px solid #000;
+  cursor: pointer;
+}
+
+.cell:hover {
+  background-color: #f0f0f0;
+}
 
 /*# sourceMappingURL=Styles.css.map */
