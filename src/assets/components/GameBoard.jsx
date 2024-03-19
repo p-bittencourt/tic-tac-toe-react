@@ -42,11 +42,6 @@ export const GameBoard = () => {
     }
   };
 
-  //  makePlay(1, 2);
-  //  makePlay(3, 3);
-  //  makePlay(1, 1);
-  //  makePlay(2, 2);
-
   return (
     <>
       <div className="container text-center">{renderBoard()}</div>
