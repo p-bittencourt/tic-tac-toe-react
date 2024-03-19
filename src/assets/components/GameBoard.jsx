@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import createGameBoard from "../utils/CreateGameBoard";
 
 export const GameBoard = () => {
-  // const boardInit = createGameBoard(3);
   const [board, setBoard] = useState(createGameBoard(3));
   const players = board.createPlayers();
   const [activePlayer, setActivePlayer] = useState(players[0]);
@@ -18,6 +17,7 @@ export const GameBoard = () => {
                 className="cell"
                 onClick={() => {
                   makePlay(rowIndex, columnIndex);
+                  board.checkWin();
                 }}
               >
                 {cell}
@@ -37,8 +37,6 @@ export const GameBoard = () => {
       activePlayer.mark === "X"
         ? setActivePlayer(players[1])
         : setActivePlayer(players[0]);
-      // console.log(activePlayer);
-      // board.printBoard();
     }
   };
 
