@@ -1,10 +1,11 @@
-import React from "react";
+import React, { useState } from "react";
 import { createGameBoard, PlayerStats } from "../utils/CreateGameBoard";
 
 export const GameBoard = () => {
-  const board = createGameBoard(3);
+  // const boardInit = createGameBoard(3);
   const players = PlayerStats();
-  let activePlayer = players[0];
+  const [board, setBoard] = useState(createGameBoard(3));
+  const [activePlayer, setActivePlayer] = useState(players[0]);
 
   const renderBoard = () => {
     return (
@@ -12,8 +13,14 @@ export const GameBoard = () => {
         {board.getBoard().map((row, rowIndex) => (
           <div key={rowIndex} className="row">
             {row.map((cell, columnIndex) => (
-              <div key={columnIndex} className="cell">
-                X
+              <div
+                key={columnIndex}
+                className="cell"
+                onClick={() => {
+                  makePlay(rowIndex, columnIndex);
+                }}
+              >
+                {cell}
               </div>
             ))}
           </div>
@@ -24,14 +31,21 @@ export const GameBoard = () => {
 
   const makePlay = (row, column) => {
     if (board.getCell(row, column)) {
-      console.log("Cell already taken");
+      alert("Cell already taken");
     } else {
       board.tagCell(row, column, activePlayer);
-      activePlayer === players[0]
-        ? (activePlayer = players[1])
-        : (activePlayer = players[0]);
+      activePlayer.mark === "X"
+        ? setActivePlayer(players[1])
+        : setActivePlayer(players[0]);
+      // console.log(activePlayer);
+      // board.printBoard();
     }
   };
+
+  //  makePlay(1, 2);
+  //  makePlay(3, 3);
+  //  makePlay(1, 1);
+  //  makePlay(2, 2);
 
   return (
     <>

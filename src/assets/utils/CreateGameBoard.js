@@ -17,13 +17,13 @@ function createGameBoard(size) {
   };
 
   const getCell = (row, column) => {
-    return board[row - 1][column - 1];
+    return board[row][column];
   };
 
   const tagCell = (row, column, activePlayer) => {
     // tagging the cell with the given player mark
     // remove 1 from the values given to tag the appropriate cell
-    board[row - 1][column - 1] = activePlayer.mark;
+    return (board[row][column] = activePlayer.mark);
   };
 
   const printBoard = () => {
