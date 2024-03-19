@@ -1,10 +1,10 @@
 import React, { useState } from "react";
-import { createGameBoard, PlayerStats } from "../utils/CreateGameBoard";
+import createGameBoard from "../utils/CreateGameBoard";
 
 export const GameBoard = () => {
   // const boardInit = createGameBoard(3);
-  const players = PlayerStats();
   const [board, setBoard] = useState(createGameBoard(3));
+  const players = board.createPlayers();
   const [activePlayer, setActivePlayer] = useState(players[0]);
 
   const renderBoard = () => {
