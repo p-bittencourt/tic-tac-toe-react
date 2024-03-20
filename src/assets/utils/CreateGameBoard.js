@@ -17,19 +17,47 @@ function createGameBoard(size) {
 
   const checkWin = () => {
     let gameOver = false;
-    const rowChecks = [];
+    let winningPlayer = "";
+    const cellChecks = [];
+
+    // Get all cells
     for (let i = 0; i < size; i++) {
       for (let j = 0; j < size; j++) {
-        rowChecks.push(getCell(i, j));
+        cellChecks.push(getCell(i, j));
       }
     }
 
-    console.log(rowChecks);
-    //
+    // Check for a win
+    for (let i = 0; i < winArrayIndex.length; i++) {
+      const [a, b, c] = winArrayIndex[i];
+      if (
+        cellChecks[a] === "X" &&
+        cellChecks[b] === "X" &&
+        cellChecks[c] === "X"
+      ) {
+        gameOver = true;
+        winningPlayer = "X";
+        break;
+      } else if (
+        cellChecks[a] === "O" &&
+        cellChecks[b] === "O" &&
+        cellChecks[c] === "O"
+      ) {
+        gameOver = true;
+        winningPlayer = "O";
+        break;
+      }
+    }
 
-    return gameOver;
+    // Check for a draw
+    if (!gameOver && cellChecks.every((cell) => cell !== "")) {
+      gameOver = true;
+    }
+
+    return [gameOver, winningPlayer];
   };
 
+  // Create the game board
   for (let i = 0; i < row; i++) {
     board[i] = [];
     for (let j = 0; j < column; j++) {
@@ -49,16 +77,14 @@ function createGameBoard(size) {
     return (board[row][column] = activePlayer.mark);
   };
 
-  const printBoard = () => {
-    console.log(board);
-  };
-
+  // Define a function to create players
   const createPlayers = (
     playerOneName = "Player One",
-    playerOneTag = "X",
-    playerTwoName = "Player Two",
-    playerTwoTag = "O"
+    playerTwoName = "Player Two"
   ) => {
+    const playerOneTag = "X";
+    const playerTwoTag = "O";
+
     const players = [
       { name: playerOneName, mark: playerOneTag },
       { name: playerTwoName, mark: playerTwoTag },
@@ -69,7 +95,6 @@ function createGameBoard(size) {
 
   return {
     getBoard,
-    printBoard,
     tagCell,
     getCell,
     createPlayers,

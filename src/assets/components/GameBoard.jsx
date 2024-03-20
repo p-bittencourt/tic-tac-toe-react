@@ -6,6 +6,22 @@ export const GameBoard = () => {
   const players = board.createPlayers();
   const [activePlayer, setActivePlayer] = useState(players[0]);
 
+  const restartGame = () => {
+    setBoard(createGameBoard(3));
+    setActivePlayer(players[0]);
+  };
+
+  const handleEndGame = () => {
+    const [gameOver, winner] = board.checkWin();
+    if (gameOver && winner) {
+      alert(`${activePlayer.name} wins!`);
+      restartGame();
+    } else if (gameOver) {
+      alert("It's a tie!");
+      restartGame();
+    }
+  };
+
   const renderBoard = () => {
     return (
       <div className="board">
@@ -17,7 +33,7 @@ export const GameBoard = () => {
                 className="cell"
                 onClick={() => {
                   makePlay(rowIndex, columnIndex);
-                  board.checkWin();
+                  handleEndGame();
                 }}
               >
                 {cell}
