@@ -21,10 +21,14 @@
   font-size: 24px;
   border: 1px solid #000;
   cursor: pointer;
-  min-width: 50px; /* Set a minimum width for each cell */
-  min-height: 50px; /* Set a minimum height for each cell */
+  min-width: 75px; /* Set a minimum width for each cell */
+  min-height: 75px; /* Set a minimum height for each cell */
 }
 
 .cell:hover {
   background-color: #f0f0f0;
+}
+
+.players-info {
+  font-size: 1.5rem;
 }

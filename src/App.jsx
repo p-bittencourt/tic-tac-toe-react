@@ -4,7 +4,10 @@ import { GameBoard } from "./assets/components/GameBoard";
 function App() {
   return (
     <>
-      <GameBoard></GameBoard>
+      <div className="container text-center">
+        <h1 className="m-4">Tic Tac Toe</h1>
+        <GameBoard></GameBoard>
+      </div>
     </>
   );
 }

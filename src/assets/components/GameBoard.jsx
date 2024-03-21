@@ -22,6 +22,23 @@ export const GameBoard = () => {
     }
   };
 
+  const renderPlayers = () => {
+    return (
+      <div className="players-container container m-3 p-5">
+        <div className="row">
+          <div className="col-6 text-end players-info">
+            <p>{players[0].name}</p>
+            <p>{players[0].mark}</p>
+          </div>
+          <div className="col-6 text-start players-info">
+            <p>{players[1].name}</p>
+            <p>{players[1].mark}</p>
+          </div>
+        </div>
+      </div>
+    );
+  };
+
   const renderBoard = () => {
     return (
       <div className="board">
@@ -58,7 +75,10 @@ export const GameBoard = () => {
 
   return (
     <>
-      <div className="container text-center">{renderBoard()}</div>
+      <div className="container text-center">
+        {renderBoard()}
+        {renderPlayers()}
+      </div>
     </>
   );
 };
