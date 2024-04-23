@@ -1,9 +1,13 @@
 import React, { useState } from "react";
-import { createGameBoard, checkWin } from "../utils/CreateGameBoard";
+import {
+  createGameBoard,
+  checkWin,
+  createPlayers,
+} from "../utils/CreateGameBoard";
 
 export const GameBoard = () => {
   const [board, setBoard] = useState(createGameBoard(3));
-  const players = board.createPlayers();
+  const players = createPlayers();
   const [activePlayer, setActivePlayer] = useState(players[0]);
 
   const restartGame = () => {
@@ -19,6 +23,17 @@ export const GameBoard = () => {
     } else if (gameOver) {
       alert("It's a tie!");
       restartGame();
+    }
+  };
+
+  const makePlay = (row, column) => {
+    if (board.getCell(row, column)) {
+      alert("Cell already taken");
+    } else {
+      board.tagCell(row, column, activePlayer);
+      activePlayer.mark === "X"
+        ? setActivePlayer(players[1])
+        : setActivePlayer(players[0]);
     }
   };
 
@@ -60,17 +75,6 @@ export const GameBoard = () => {
         ))}
       </div>
     );
-  };
-
-  const makePlay = (row, column) => {
-    if (board.getCell(row, column)) {
-      alert("Cell already taken");
-    } else {
-      board.tagCell(row, column, activePlayer);
-      activePlayer.mark === "X"
-        ? setActivePlayer(players[1])
-        : setActivePlayer(players[0]);
-    }
   };
 
   return (

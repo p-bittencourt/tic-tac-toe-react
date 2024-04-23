@@ -14,7 +14,7 @@ function createGameBoard(size) {
   }
 
   const getSize = () => {
-    return row;
+    return size;
   };
 
   const getBoard = () => {
@@ -29,31 +29,15 @@ function createGameBoard(size) {
     return (board[row][column] = activePlayer.mark);
   };
 
-  // Define a function to create players
-  const createPlayers = (
-    playerOneName = "Player One",
-    playerTwoName = "Player Two"
-  ) => {
-    const playerOneTag = "X";
-    const playerTwoTag = "O";
-
-    const players = [
-      { name: playerOneName, mark: playerOneTag },
-      { name: playerTwoName, mark: playerTwoTag },
-    ];
-
-    return players;
-  };
-
   return {
     getBoard,
     tagCell,
     getCell,
-    createPlayers,
     getSize,
   };
 }
 
+// Function to check for a win
 function checkWin(board) {
   let gameOver = false;
   let winningPlayer = "";
@@ -107,18 +91,20 @@ function checkWin(board) {
   return [gameOver, winningPlayer];
 }
 
-/* function PlayerStats(
+// Define a function to create players
+function createPlayers(
   playerOneName = "Player One",
-  playerOneTag = "X",
-  playerTwoName = "Player Two",
-  playerTwoTag = "O"
+  playerTwoName = "Player Two"
 ) {
+  const playerOneTag = "X";
+  const playerTwoTag = "O";
+
   const players = [
     { name: playerOneName, mark: playerOneTag },
     { name: playerTwoName, mark: playerTwoTag },
   ];
 
-  return players; 
-} */
+  return players;
+}
 
-export { createGameBoard, checkWin };
+export { createGameBoard, checkWin, createPlayers };
