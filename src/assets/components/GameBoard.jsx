@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import createGameBoard from "../utils/CreateGameBoard";
+import { createGameBoard, checkWin } from "../utils/CreateGameBoard";
 
 export const GameBoard = () => {
   const [board, setBoard] = useState(createGameBoard(3));
@@ -12,7 +12,7 @@ export const GameBoard = () => {
   };
 
   const handleEndGame = () => {
-    const [gameOver, winner] = board.checkWin();
+    const [gameOver, winner] = checkWin(board);
     if (gameOver && winner) {
       alert(`${activePlayer.name} wins!`);
       restartGame();
