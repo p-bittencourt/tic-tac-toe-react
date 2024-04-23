@@ -1,9 +1,7 @@
 import React, { useState } from "react";
-import {
-  createGameBoard,
-  checkWin,
-  createPlayers,
-} from "../utils/CreateGameBoard";
+import createGameBoard from "../utils/CreateGameBoard";
+import createPlayers from "../utils/CreatePlayers";
+import checkWin from "../utils/CheckWin";
 
 export const GameBoard = () => {
   const [board, setBoard] = useState(createGameBoard(3));
